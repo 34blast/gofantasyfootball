@@ -1,0 +1,45 @@
+{
+  "_id": "_design/playerDoc",
+  "views": {
+    "allkeys-view": {
+      "map": "function(doc,meta)\n{\n  emit(doc._id, doc);\n}"
+    },
+    "lastname-view": {
+      "map": "function(doc, meta)\n{\n  if (doc.LastName)\n  {\n     emit(doc.LastName,doc);\n  }\n}"
+    },
+    "firstname-view": {
+      "map": "function(doc, meta)\n{\n  if (doc.FirstName)\n  {\n     emit(doc.FirstName,doc);\n  }\n}"
+    },
+    "fullname-view": {
+      "map": "function(doc, meta)\n{\n  if (doc.LastName && doc.FirstName)\n  {\n     emit(doc.LastName + doc.FirstName,doc);\n  }\n}"
+    },
+    "names-view": {
+      "map": "function(doc, meta)\n{\n  if (doc.LastName && doc.FirstName)\n  {\n     emit([doc.LastName, doc.FirstName],doc);\n  }\n}"
+    },
+    "age-view": {
+      "map": "function(doc, meta)\n{\n  if (doc.Age)\n  {\n     emit(doc.Age, doc);\n  }\n}"
+    },
+    "agename-view": {
+      "map": "function(doc, meta)\n{\n  if (doc.Age && doc.LastName && doc.FirstName)\n  {\n     emit([doc.Age, doc.LastName, doc.FirstName], doc);\n  }\n}"
+    },
+    "agenamenodoc-view": {
+      "map": "function(doc, meta)\n{\n  if (doc.Age && doc.LastName && doc.FirstName)\n  {\n     emit([doc.Age, doc.LastName, doc.FirstName]);\n  }\n}"
+    },
+    "position-view": {
+      "map": "function(doc, meta)\n{\n  if (doc.Position)\n  {\n     emit(doc.Position,doc);\n  }\n}"
+    },
+    "ranking-view": {
+      "map": "function(doc, meta)\n{\n  if (doc.Ranking)\n  {\n     emit(doc.Ranking,doc);\n  }\n}"
+    },
+    "rankingnododc-view": {
+      "map": "function(doc, meta)\n{\n  if (doc.Ranking)\n  {\n     emit(doc.Ranking);\n  }\n}"
+    },
+    "positionandrank-view": {
+      "map": "function(doc, meta)\n{\n  if (doc.Ranking && doc.Position)\n  {\n     emit([doc.Position, doc.Ranking],doc);\n  }\n}"
+    },
+    "positionandranknodoc-view": {
+      "map": "function(doc, meta)\n{\n  if (doc.Ranking && doc.Position)\n  {\n     emit([doc.Position, doc.Ranking]);\n  }\n}"
+    }
+  },
+  "language": "javascript"
+}

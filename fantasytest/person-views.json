@@ -1,0 +1,30 @@
+{
+  "_id": "_design/personDoc",
+  "views": {
+    "allkeys-view": {
+      "map": "function(doc,meta)\n{\n  emit(doc._id, doc);\n}"
+    },
+    "lastname-view": {
+      "map": "function(doc, meta)\n{\n  if (doc.LastName)\n  {\n     emit(doc.LastName,doc);\n  }\n}"
+    },
+    "firstname-view": {
+      "map": "function(doc, meta)\n{\n  if (doc.FirstName)\n  {\n     emit(doc.FirstName,doc);\n  }\n}"
+    },
+    "fullname-view": {
+      "map": "function(doc, meta)\n{\n  if (doc.LastName && doc.FirstName)\n  {\n     emit(doc.LastName + doc.FirstName,doc);\n  }\n}"
+    },
+    "names-view": {
+      "map": "function(doc, meta)\n{\n  if (doc.LastName && doc.FirstName)\n  {\n     emit([doc.LastName, doc.FirstName],doc);\n  }\n}"
+    },
+    "age-view": {
+      "map": "function(doc, meta)\n{\n  if (doc.Age)\n  {\n     emit(doc.Age, doc);\n  }\n}"
+    },
+    "agename-view": {
+      "map": "function(doc, meta)\n{\n  if (doc.Age && doc.LastName && doc.FirstName)\n  {\n     emit([doc.Age, doc.LastName, doc.FirstName], doc);\n  }\n}"
+    },
+    "agenamenodoc-view": {
+      "map": "function(doc, meta)\n{\n  if (doc.Age && doc.LastName && doc.FirstName)\n  {\n     emit([doc.Age, doc.LastName, doc.FirstName]);\n  }\n}"
+    }
+  },
+  "language": "javascript"
+}
