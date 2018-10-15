@@ -1,7 +1,7 @@
 package main
 
 import (
-	"gofantasyfootball/common"
+	"github.com/34blast/gofantasyfootball/common"
 	"fmt"
 	//	"github.com/zemirco/couchdb"
 	//	"net/url"
