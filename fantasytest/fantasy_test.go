@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"context"
 	"encoding/json"
-	"gofantasyfootball/common"
+	"github.com/34blast/gofantasyfootball/common"
 	"flag"
 	"fmt"
 	_ "github.com/go-kivik/couchdb"
